@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Header from "./Header";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [items, setItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
-
+  const navigate=useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -56,7 +57,7 @@ const Cart = () => {
 
   return (
     <>
-      <Header cartItemCount={items.length>0} />
+      <Header cartItemCount={items.length} />
       <div className="flex flex-col md:flex-row p-8 bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen">
         <div className="md:w-2/3 w-full p-6">
           {items.length>0 && (<h1 className="text-4xl font-bold mb-6 text-gray-800 hover:text-blue-600">Your Cart</h1>)}
@@ -110,7 +111,10 @@ const Cart = () => {
                 </li>
               ))
             ) : (
-              <p className="text-center text-red-600 text-2xl font-smallbold bg-gray-300 w-2/4 h-full p-10 border-1 border-black rounded-lg">Your Cart is Empty.</p>
+              <div className="flex flex-col justify-center items-center ml-100">
+                <p className="text-red-500 text-2xl font-bold mt-30">Your Cart is Empty.</p>
+                <button className="bg-blue-500 w-fit rounded-lg p-2 mt-6 text-white cursor-pointer" onClick={()=> navigate('/')}>Shop Now</button>
+              </div>
             )}
           </ul>
         </div>
@@ -128,11 +132,14 @@ const Cart = () => {
                 <span className="font-bold">&#8377;{totalAmount.toFixed(2)}</span>
               </p>
             </div>
+            <div className="mt-6">
+              <button className="bg-black text-white p-3 rounded-xl" onClick={()=> navigate('/address')}>Address Details</button>
+            </div>
             <button className="w-full mt-8 bg-green-500 text-white py-3 rounded-lg text-lg font-semibold hover:bg-green-600 transition">
               Buy Now
             </button>
           </div>
-        )}
+        )}     
       </div>
     </>
   );

@@ -16,7 +16,7 @@ const Category = () => {
         const filtered = products.filter((item) => item.category === category);
         setFilteredItems(filtered);
       })
-      .catch((err) => {
+      .catch((err) => { 
         console.error("Error fetching items:", err);
       });
   }, [category]);

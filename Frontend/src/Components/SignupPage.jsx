@@ -17,7 +17,7 @@ const SignupPage = () => {
   const [otpError, setOtpError] = useState("");
 
   const generateOtp = () => {
-    const otp = Math.floor(10000 + Math.random() * 90000);
+    const otp = Math.floor(100000 + Math.random() * 900000);
     setGeneratedOtp(otp.toString());
     return otp;
   };
@@ -25,11 +25,12 @@ const SignupPage = () => {
   const handleSignup = async () => {
     if (!username.trim() || !email.trim() || !password.trim()) {
       alert("Please enter all details: Username, Email, and Password.");
+      localStorage.stringify(email);
       return;
     }
 
     const otpToSend = generateOtp();
-
+    
     try {
       await emailjs.send(
         "service_le8wkeh",

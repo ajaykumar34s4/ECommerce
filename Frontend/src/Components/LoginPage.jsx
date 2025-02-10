@@ -24,9 +24,11 @@ const LoginPage = () => {
       });
 
       if (response.data.success) {
+        localStorage.setItem("token", response.data.token);
         alert("Login successful!");
         navigate("/");
-      } else {
+      }
+       else {
         setError("Invalid email or password.");
       }
     } catch (error) {

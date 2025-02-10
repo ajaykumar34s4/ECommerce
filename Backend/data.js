@@ -66,6 +66,18 @@ export const products = [
   {
     category: "Electronics",
     sub_category: "Mobile Phones",
+    title: "Iphone",
+    description: "latest model Iphone with great features",
+    price: 10000,
+    rating: {
+      rate: 4.8,
+      count: 500,
+    },
+    image: `${BASE_URL}/images/iphone.jpeg`,
+  },
+  {
+    category: "Electronics",
+    sub_category: "Mobile Phones",
     title: "Smartphone",
     description: "latest model smartphone with great features",
     price: 1000,
@@ -111,6 +123,7 @@ export const products = [
     },
     image: `${BASE_URL}/images/sleeve.jpeg`,
   },
+  
   {
     category: "Electronics",
     sub_category: "Headphones",
@@ -176,31 +189,31 @@ export const products = [
     sub_category: "Fruits",
     title: "Apple",
     description: "fresh and organic apples",
-    price: 5,
+    price: 100,
     rating: {
       rate: 4.8,
       count: 200,
     },
-    image: `${BASE_URL}/images/fruits.jpeg`,
+    image: `${BASE_URL}/images/apple.jpeg`,
   },
   {
     category: "Groceries",
     sub_category: "Vegetables",
     title: "Carrot",
     description: "fresh carrots from local farm",
-    price: 2,
+    price: 20,
     rating: {
       rate: 4.6,
       count: 180,
     },
-    image: `${BASE_URL}/images/vegetables.jpeg`,
+    image: `${BASE_URL}/images/carrot.jpeg`,
   },
   {
     category: "Groceries",
     sub_category: "Beverages",
     title: "Orange Juice",
     description: "freshly squeezed orange juice",
-    price: 4,
+    price: 40,
     rating: {
       rate: 4.7,
       count: 300,
@@ -210,9 +223,9 @@ export const products = [
   {
     category: "Groceries",
     sub_category: "Snacks",
-    title: "Chips",
+    title: "Pizza",
     description: "crispy potato chips",
-    price: 3,
+    price: 200,
     rating: {
       rate: 4.2,
       count: 400,

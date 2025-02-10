@@ -6,9 +6,13 @@ const Container = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(token);
+
     axios
       .get("http://localhost:3000/getItems")
       .then((response) => {
@@ -27,7 +31,14 @@ const Container = () => {
     new Map(items.map((item) => [item.category, item])).values()
   );
 
-  const handleImageClick = (category) => {
+  const handleImageClick = () => {
+    if (!isLoggedIn) {
+      alert("Please login to shop now.");
+      navigate("/");
+    }
+  };
+
+  const handleViewMore = (category) => {
     navigate("/category", { state: { category } });
   };
 
@@ -46,18 +57,26 @@ const Container = () => {
           {uniqueItems.map((item, index) => (
             <li
               key={index}
-              className="bg-white rounded-lg border shadow-lg hover:shadow-2xl hover:border-green-400 transition-shadow duration-300 overflow-hidden cursor-pointer"
-              onClick={() => handleImageClick(item.category)}
+              className="bg-white rounded-lg border shadow-lg hover:shadow-2xl hover:border-green-400 transition-shadow duration-300 overflow-hidden"
             >
               <img
                 src={item.image || "https://via.placeholder.com/150"}
                 alt={item.name || "Item image"}
                 className="w-full h-64 object-contain bg-gray-100"
+                onClick={handleImageClick}
               />
               <div className="p-4">
                 <p className="text-xl font-semibold text-gray-800 mt-1 capitalize">
                   {item.category}
                 </p>
+                {isLoggedIn && (
+                  <button
+                    className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600 mt-2 cursor-pointer"
+                    onClick={() => handleViewMore(item.category)}
+                  >
+                    View More
+                  </button>
+                )}
               </div>
             </li>
           ))}

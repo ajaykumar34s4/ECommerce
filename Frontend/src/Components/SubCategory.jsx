@@ -31,14 +31,14 @@ const SubCategory = () => {
       setCount(count-1)
   }
   const Addtocart=async ()=>{
-      // const token = localStorage.getItem("token"); 
+      const token = localStorage.getItem("token"); 
     
-      // if (!token) {
-      //   alert("Please log in to add items to the cart.");
-      //   return;
-      // }
+      if (!token) {
+        alert("Please log in to add items to the cart.");
+        return;
+      }
     
-      // if (count === 0) return; 
+      if (count === 0) return; 
     
       const cartItem = {
         title: item.title,
@@ -52,7 +52,7 @@ const SubCategory = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // "Authorization":  `${token}`
+            "Authorization":  `${token}`
           },
           body: JSON.stringify(cartItem),
         });
