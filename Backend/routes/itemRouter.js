@@ -1,7 +1,8 @@
-import express from 'express'
-import { itemController } from '../controllers/item.controller.js'
-const itemrouter=express.Router()
-itemrouter.get('/getItems',itemController)
-export default itemrouter;
+import express from "express";
+import { postItems } from "../controllers/item.controller.js";
 
+const itemRouter = express.Router();
 
+itemRouter.get("/postitems",postItems)
+
+export default itemRouter;

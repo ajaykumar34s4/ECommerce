@@ -1,7 +1,10 @@
-import express from 'express'
-import { loginController, getUsers } from '../controllers/login.controller.js'
-const loginRouter=express.Router()
-loginRouter.post('/postUsers',loginController);
-loginRouter.get('/getUsers',getUsers);
+import express from "express";
+// import { postData } from "../controllers/email.controller.js";
+import { login } from "../controllers/login.controller.js";
 
-export default loginRouter
+const loginrouter = express.Router();
+
+loginrouter.post("/logindata",login);
+
+
+export default loginrouter;

@@ -1,7 +1,5 @@
-import dotenv from "dotenv";
 
-dotenv.config();
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = "http://localhost:3000";
 export const products = [
   {
     category: "Clothes",
@@ -43,7 +41,7 @@ export const products = [
     category: "Clothes",
     sub_category: "Women's Wear",
     title: "Blouse",
-    description: "this is a casual blouse",
+    description: "this is a casual Blouse",
     price: 120,
     rating: {
       rate: 4.0,
@@ -66,18 +64,6 @@ export const products = [
   {
     category: "Electronics",
     sub_category: "Mobile Phones",
-    title: "Iphone",
-    description: "latest model Iphone with great features",
-    price: 10000,
-    rating: {
-      rate: 4.8,
-      count: 500,
-    },
-    image: `${BASE_URL}/images/iphone.jpeg`,
-  },
-  {
-    category: "Electronics",
-    sub_category: "Mobile Phones",
     title: "Smartphone",
     description: "latest model smartphone with great features",
     price: 1000,
@@ -86,6 +72,18 @@ export const products = [
       count: 500,
     },
     image: `${BASE_URL}/images/mobile.jpeg`,
+  },
+  {
+    category: "Electronics",
+    sub_category: "Mobile Phones",
+    title: "Iphone",
+    description: "latest model smartphone with great features",
+    price: 10000,
+    rating: {
+      rate: 4.8,
+      count: 500,
+    },
+    image: `${BASE_URL}/images/iphone.jpeg`,
   },
   {
     category: "Electronics",
@@ -123,7 +121,6 @@ export const products = [
     },
     image: `${BASE_URL}/images/sleeve.jpeg`,
   },
-  
   {
     category: "Electronics",
     sub_category: "Headphones",
@@ -189,7 +186,7 @@ export const products = [
     sub_category: "Fruits",
     title: "Apple",
     description: "fresh and organic apples",
-    price: 100,
+    price: 5,
     rating: {
       rate: 4.8,
       count: 200,
@@ -201,7 +198,7 @@ export const products = [
     sub_category: "Vegetables",
     title: "Carrot",
     description: "fresh carrots from local farm",
-    price: 20,
+    price: 2,
     rating: {
       rate: 4.6,
       count: 180,
@@ -213,7 +210,7 @@ export const products = [
     sub_category: "Beverages",
     title: "Orange Juice",
     description: "freshly squeezed orange juice",
-    price: 40,
+    price: 4,
     rating: {
       rate: 4.7,
       count: 300,
@@ -223,9 +220,9 @@ export const products = [
   {
     category: "Groceries",
     sub_category: "Snacks",
-    title: "Pizza",
+    title: "Chips",
     description: "crispy potato chips",
-    price: 200,
+    price: 3,
     rating: {
       rate: 4.2,
       count: 400,

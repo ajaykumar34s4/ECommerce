@@ -17,7 +17,7 @@ const Bcomp = () => {
             <h6 className="font-semibold text-m">{arr_name[index]}</h6>
           </div>
         ))}
-      </div> 
+      </div>
     );
   };
   

@@ -10,7 +10,7 @@ const LandingPage = () => {
       <Header/>
       <Bcomp />
       <AutoSlider/>
-      <Container />
+      <Container/>
       <Footer/>
     </div>
   )

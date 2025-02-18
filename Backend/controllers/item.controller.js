@@ -1,13 +1,19 @@
-import { products } from "../data.js"
-import { Items1 } from "../models/item.model.js";
+import { products } from "../data.js";
+import { Items } from "../models/item.model.js";
 
-export const itemController=async (req,res)=>{
-    try{
-        await Items1.insertMany(products)
-        res.status(200).send({message:"Success",data:products});
-    }
-    catch(err){
-        console.log("Error")
-    }
-}
+export const postItems = async (req, res) => {
+    try {
+        await Items.deleteMany({});
+         const allProducts= await Items.insertMany(products);
 
+        res.status(201).json({
+            message: "Products added successfully!",
+            data:allProducts
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: "Server error",
+            error: err.message
+        });
+    }
+};

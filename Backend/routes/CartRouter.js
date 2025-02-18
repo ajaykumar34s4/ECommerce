@@ -1,7 +1,10 @@
-import express from 'express'
-import { cartController, getcartData, removeItems } from '../controllers/cart.controller.js'
-const cartRouter=express.Router()
-cartRouter.get('/getcartItems',getcartData)
-cartRouter.post('/cartItems',cartController)
-cartRouter.delete('/removeItems/:id',removeItems)
+import express from "express";
+import { cartItems, deleteCartData, getCartData } from "../controllers/cart.controller.js";
+
+const cartRouter = express.Router();
+
+cartRouter.post("/cartpost",cartItems);
+cartRouter.get("/getcartitems",getCartData);
+cartRouter.delete("/deletedata/:id",deleteCartData)
+
 export default cartRouter;

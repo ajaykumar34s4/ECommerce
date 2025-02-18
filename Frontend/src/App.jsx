@@ -1,12 +1,16 @@
+// import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignUp from './Components/SignupPage'; 
+import SignUp from './Components/SignupPage'; // Ensure the path is correct
 import LoginPage from './Components/LoginPage';
 import LandingPage from './Utilities/LandingPage';
 import Container from './Components/Container';
-import Category from './Components/Category';
-import SubCategory from './Components/SubCategory';
-import Cart from './Components/Cart';
-import Adress from './Components/Adress';
+import Category from './Utilities/Category';
+import Cart from './Utilities/Cart';
+import Subcategory from './Utilities/Subcategory';
+import Forgot from './Utilities/Forgot';
+import Orders from './Utilities/Orders';
+import Payment from './Components/Payment';
+import Address from './Components/Address';
 
 
 const App = () => {
@@ -15,12 +19,15 @@ const App = () => {
       <Routes>
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path='/container' element={<Container />}/>
-        <Route path='/category' element={<Category />}/>
-        <Route path='/subcategory' element={<SubCategory />}/>
-        <Route path='/cart' element={<Cart />}/>
-        <Route path='/address' element={<Adress />}/>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/forgot" element={<Forgot />} />
+        <Route path="/address" element={<Address />} />
+        <Route path="/container" element={<Container />} />
+        <Route path="category/:title" element={<Category />} />
+        <Route path="/:title" element={<Subcategory />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );

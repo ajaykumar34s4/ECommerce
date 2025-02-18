@@ -1,45 +1,49 @@
 import { useState } from "react";
 import img from "../assets/loginlogo.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import Footer from "./Footer";
-import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
-  const handleLogin = async () => {
-    if (!email.trim() || !password.trim()) {
-      setError("Please enter both email and password.");
-      return;
-    }
-
+  const goToHome = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/getUsers`, {
-        params: { email, password },
+      const response = await axios.post("http://localhost:3000/logindata", {
+        email,
+        password,
       });
 
-      if (response.data.success) {
-        localStorage.setItem("token", response.data.token);
-        alert("Login successful!");
+      if (response.status === 201) {
+        const { token, email, id } = response.data.Loggeduser;
+
+        localStorage.setItem("token", token); // Store token
+        localStorage.setItem("email", email);
+        localStorage.setItem("id", id);
+        alert("Login Successful");
         navigate("/");
       }
-       else {
-        setError("Invalid email or password.");
-      }
     } catch (error) {
-      console.error("Error during login:", error);
-      setError("Something went wrong. Please try again.");
+      if (error.response) {
+        console.error("Login Error:", error);
+        alert(error.response.data.message);
+      } else {
+        alert("Network Error. Please try again.");
+      }
     }
   };
 
-  const goToSignup = () => {
-    navigate("/register");
-  };
+  const goToSignUp = () => {
+    navigate('/register')
+  }
+
+  const forgotPassword = () => {
+    navigate('/forgot')
+  }
 
   return (
     <>
@@ -56,7 +60,7 @@ const LoginPage = () => {
         <div className="bg-gray-200 p-3">
           <div className="flex flex-col items-center">
             <input
-              type="text"
+              type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -69,18 +73,20 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
               className="w-100 border-b-2 m-2 p-1 focus-visible:outline-none focus:ring-0 cursor-pointer"
             />
-            {error && <p className="text-red-500">{error}</p>}
+            <a href="" className="text-sm font-semibold ml-67" onClick={forgotPassword}>
+              Forgot Password?
+            </a>
             <button
               className="bg-orange-400 p-2 w-75 font-semibold mt-2"
-              onClick={handleLogin}
+              onClick={goToHome}
             >
               Login
             </button>
             <button
               className="bg-white p-2 w-75 font-semibold mt-2 border-b-2"
-              onClick={goToSignup}
+              onClick={goToSignUp}
             >
-              New User? Register
+              New User? Sign Up
             </button>
           </div>
         </div>
